@@ -8,12 +8,15 @@ class Database(object):
     def insert(self, table, data):
         Table = self.db[table]
 
-        Table.insert_ignore(data)
+        if self.checkIfExists(table, data):
+            return
+
+        Table.insert(data)
 
     def checkIfExists(self, table, data):
         Table = self.db[table]
 
-        if Table.find_one(data):
+        if Table.find_one(**data):
             return True
 
         return None
@@ -24,3 +27,4 @@ class Database(object):
             return self.db[table].all()
         else:
             return self.db[table].find(data)
+
