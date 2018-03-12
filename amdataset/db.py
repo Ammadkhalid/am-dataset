@@ -13,13 +13,22 @@ class Database(object):
 
         Table.insert(data)
 
-    def checkIfExists(self, table, data):
+    def getFirst(self, table, data):
         Table = self.db[table]
 
-        if Table.find_one(**data):
-            return True
+        return Table.find_one(**data)
 
+
+    def checkIfExists(self, table, data):
+        if self.getFirst(table, data):
+            return True
+            
         return None
+
+    def update(self, table, where, data):
+        Table = self.db[table]
+
+        return Table.update(data, where)
 
     def getAll(self, table, data = None):
 
