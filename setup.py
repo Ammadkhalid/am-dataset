@@ -4,5 +4,6 @@ name = 'amdataset',
 version = '0.1',
 packages = find_packages(),
 author = 'Ammad Khalid',
-install_requires = ['dataset']
+install_requires = ['dataset'],
+author_email = 'Ammadkhalid12@gmail.com'
 )
