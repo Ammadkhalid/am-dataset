@@ -6,6 +6,7 @@ packages = find_packages(),
 author = 'Ammad Khalid',
 description = open('README.md', 'r').read(),
 install_requires = ['dataset'],
-url = '',
+keywords = 'database,dataset,ORM',
+url = 'https://github.com/Ammadkhalid/am-dataset.git',
 author_email = 'Ammadkhalid12@gmail.com'
 )
