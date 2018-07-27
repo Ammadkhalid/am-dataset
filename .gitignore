@@ -1,0 +1,8 @@
+.vs
+.vscode
+.code
+.idea
+bin/
+obj/
+node_modules/
+vendor/
