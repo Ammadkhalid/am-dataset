@@ -102,4 +102,4 @@ class Database(object):
         if data is None:
             return self.db[table].all()
         else:
-            return self.db[table].find(data)
+            return self.db[table].find(**data)

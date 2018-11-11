@@ -1,23 +1,9 @@
 import dataset
 
-"""
-Extends dataset.Database class.
 
-And put our additional functions.
-"""
 class Database(dataset.Database):
 
     def insert(self, table, data):
-        """
-        Insert Data to given table.
-        
-        Arguments:
-            table {string} -- table name.
-            data {dict} -- data in dict
-        
-        Returns:
-            [int]
-        """
         table = self[table]
 
         if self.check_if_exists(table, data):
@@ -29,17 +15,17 @@ class Database(dataset.Database):
         """Converts table type to str."""
 
         table = str(table)
-        
+
         return self.get_table(table)
 
-    def get_first(self, table, data = None):
+    def get_first(self, table, data=None):
         """Gets First Recorder of given table."""
 
         # if variable is dict
         if isinstance(data, dict):
             return self[table].find_one(**data)
-        
-        if sum(1 for k in self.get_all(table)):
+
+        if sum(1 for _ in self.get_all(table)):
             return [i for i in self.get_all(table)][0]
 
     def check_if_exists(self, table, data):
@@ -65,24 +51,21 @@ class Database(dataset.Database):
         """ Delete data from table."""
         return self[table].delete(**data)
 
-    def get_all(self, table, data = None):
-        """Gets all data of given table.
-        
-        Arguments:
-            table {str}
-        
-        Keyword Arguments:
-            data {[dict|null]} (default: {None})
-        
-        Returns:
-            iter
+    def get_all(self, table, data=None):
+        """
+        Get all
+
+        :param table: string
+        :param data: dict
+        :return: iterate
         """
         table = self[table]
 
         if data is None:
             return table.all()
         else:
-            return table.find(data)
+            return table.find(**data)
+
 
 # set custom Database class
 dataset.Database = Database
